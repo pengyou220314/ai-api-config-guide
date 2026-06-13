@@ -1,0 +1,8 @@
+# 本地数据 / 密钥,不提交
+**/volumes/
+**/data/
+*.env
+.env
+.DS_Store
+/tmp/
+_*.json

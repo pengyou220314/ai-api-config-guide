@@ -1,0 +1,68 @@
+# Dify self-hosted - 精简版 docker-compose
+# 官方完整版见 https://github.com/langgenius/dify ,这里给一个能快速起来的最小配置。
+# 模型的 api_key / base_url 不写在这里,启动后在 Web 界面「模型供应商」里填。
+
+version: "3"
+
+services:
+  api:
+    image: langgenius/dify-api:latest
+    restart: always
+    environment:
+      MODE: api
+      SECRET_KEY: please-change-this-to-a-random-secret
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_USERNAME: postgres
+      DB_PASSWORD: difyai123456
+      DB_DATABASE: dify
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
+    depends_on:
+      - db
+      - redis
+
+  worker:
+    image: langgenius/dify-api:latest
+    restart: always
+    environment:
+      MODE: worker
+      SECRET_KEY: please-change-this-to-a-random-secret
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_USERNAME: postgres
+      DB_PASSWORD: difyai123456
+      DB_DATABASE: dify
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
+    depends_on:
+      - db
+      - redis
+
+  web:
+    image: langgenius/dify-web:latest
+    restart: always
+
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: difyai123456
+      POSTGRES_DB: dify
+    volumes:
+      - ./volumes/db:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6-alpine
+    restart: always
+    volumes:
+      - ./volumes/redis:/data
+
+  nginx:
+    image: nginx:latest
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+      - web

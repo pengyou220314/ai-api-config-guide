@@ -1,0 +1,20 @@
+# OpenWebUI - 接入 OpenAI 兼容 API 的最小 docker-compose
+# 把 OPENAI_API_BASE_URL 和 OPENAI_API_KEY 换成你自己的网关地址和密钥。
+
+version: "3"
+
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    restart: always
+    ports:
+      - "3000:8080"
+    environment:
+      # 网关地址,带 /v1。例如某个 OpenAI 兼容中转。
+      OPENAI_API_BASE_URL: "https://api.example.com/v1"
+      OPENAI_API_KEY: "sk-xxxx"
+      # 关掉本地 ollama,只用远程 API
+      ENABLE_OLLAMA_API: "false"
+    volumes:
+      - ./data:/app/backend/data
