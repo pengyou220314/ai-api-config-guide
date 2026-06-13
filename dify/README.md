@@ -1,6 +1,6 @@
 # Dify 接入第三方 / OpenAI 兼容 API
 
-Dify 支持添加自定义 OpenAI 兼容模型供应商,把 Claude / GPT / Gemini / DeepSeek 统一接进来做应用编排。
+Dify 支持添加自定义 OpenAI 兼容模型供应商,把 Claude 全系列 / GPT-5 全系列 / 画图(gpt-image) 统一接进来做应用编排。
 
 ## 配置步骤(Web 界面)
 

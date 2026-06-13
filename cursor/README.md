@@ -1,6 +1,6 @@
 # Cursor 接入第三方 / OpenAI 兼容 API
 
-Cursor 支持自定义 OpenAI 兼容接口,可以把内置的 GPT 换成任意兼容网关(Claude、GPT、Gemini、DeepSeek 等)。
+Cursor 支持自定义 OpenAI 兼容接口,可以把内置的 GPT 换成任意兼容网关(Claude 全系列、GPT-5 全系列、画图模型 等)。
 
 ## 配置步骤
 

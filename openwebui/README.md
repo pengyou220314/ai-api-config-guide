@@ -1,6 +1,6 @@
 # OpenWebUI 接入第三方 / OpenAI 兼容 API
 
-OpenWebUI 是开源的本地大模型 Web 界面,原生支持 OpenAI 兼容接口,几分钟就能接入 Claude / GPT / Gemini / DeepSeek。
+OpenWebUI 是开源的本地大模型 Web 界面,原生支持 OpenAI 兼容接口,几分钟就能接入 Claude 全系列 / GPT-5 全系列 / 画图(gpt-image)。
 
 ## 一键启动(docker-compose)
 
